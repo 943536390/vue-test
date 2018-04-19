@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
+  <title>文档标题</title>
+</head>
+<body>
+  <div id="app">
+    <fieldset>
+      <legend>Create New Person</legend>
+      <div class="form-group">
+        <label>Name：</label><input type="text" name="name" v-model="newPerson.name">
+      </div>
+      <div class="form-group">
+        <label>Age：</label><input type="text" name="age" v-model.number="newPerson.age">
+      </div>
+      <div class="form-group">
+        <label>Sex：</label>
+        <select v-model="newPerson.sex">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <button class="btn btn-success" v-on:click="addPerson">create</button>
+    </fieldset>
+    <table class="table table-hover table-striped table-bordered">
+      <thead>
+        <tr class="success ">
+          <td>Name</td>
+          <td>Age</td>
+          <td>Sex</td>
+          <td>Delete</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(user,index) in users">
+          <td >{{user.name}}</td>
+          <td>{{user.age}}</td>
+          <td>{{user.sex}}</td>
+         <td><button v-on:click="deletePerson(index)" class="btn btn-success">delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</body>
+<script type="text/javascript">
+  var app = new Vue({
+    el: "#app",
+    data: {
+      newPerson: {
+        name: '',
+        age: 0,
+        sex: 'Male'
+      },
+      users: [{
+          name: 'Jack',
+          age: 30,
+          sex: 'Male'
+        }, {
+          name: 'Bill',
+          age: 26,
+          sex: 'Male'
+        }, {
+          name: 'Tracy',
+          age: 22,
+          sex: 'Female'
+        }, {
+          name: 'Chris',
+          age: 36,
+          sex: 'Male'
+        }]
+    },
+    methods: {
+      addPerson: function(){
+        this.users.push(this.newPerson);
+        this.newPerson = {
+        name: '',
+        age: 0,
+        sex: 'Male'
+      };
+
+      },
+      deletePerson: function(index){
+        this.users.splice(index,1);
+
+      },
+
+    }
+  });
+</script>
+</html>

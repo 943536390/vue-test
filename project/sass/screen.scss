@@ -1,0 +1,71 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "normalize";
+@import "compass/css3";
+
+@mixin global($fontsize:625%){
+	* {
+		@include box-sizing(border-box);
+	}
+	html,
+	body {
+		height: 100%;
+		font-size: $fontsize;
+	}
+
+	body {
+		font-size: 0.16rem;
+	}
+}
+
+@include global();
+
+fieldset {
+    width: 60%;
+    margin: 0 auto;
+
+   button {
+    	margin-left: 1.2rem;
+    }
+    
+  }
+.form-group label {
+    @include inline-block;
+    width: 1rem;
+    text-align: right;
+    margin-right: 0.2rem;
+    
+}
+.form-group input {  
+	margin: 0;
+    width: 2rem;
+    height: 0.3rem;  
+    line-height: 0.3rem;
+}
+
+.form-group select {
+	height: 0.3rem;
+	margin-left: -4px;
+
+}
+
+.table {
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+	border-collapse: collapse;
+	
+	td {
+		vertical-align: middle!important;
+	}
+
+}
+
+
+
+
+ 
+
